@@ -69,17 +69,17 @@ const Navbar = ({ user }) => {
           })}
           
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '1rem' }}>
-            {location.pathname !== '/' && (
+            {location.pathname !== '/' ? (
               <Link to="/" className="btn-outline" style={{ padding: '8px 16px', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <LogOut size={16} />
                 Log Out
               </Link>
+            ) : (
+              <Link to="/onboarding" className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.9rem' }}>
+                Get Started
+                <Zap size={16} />
+              </Link>
             )}
-            
-            <Link to="/onboarding" className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.9rem' }}>
-              Get Started
-              <Zap size={16} />
-            </Link>
           </div>
         </div>
       </div>

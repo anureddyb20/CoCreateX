@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Layout, CheckSquare, MessageSquare, Files, Settings, 
   AlertCircle, Users, Activity, Flag, ChevronRight, Plus 
 } from 'lucide-react';
+import { problems } from '../data/problems';
 
 const Workspace = () => {
+  const { id } = useParams();
   const [activeTab, setActiveTab] = useState('board');
+  
+  // Find the problem based on the ID from the URL
+  const selectedProblem = problems.find(p => p.id === parseInt(id)) || problems[0];
 
   const project = {
-    title: "AI Mental Health Companion",
-    stage: "Prototype",
-    progress: 65,
+    title: selectedProblem.title,
+    domain: selectedProblem.domain,
+    desc: selectedProblem.desc,
+    stage: selectedProblem.status || "Ideation",
+    progress: 35, // Placeholder
     team: [
+      { name: "Anu", role: "Product Owner", activity: "High", contributions: 10 },
       { name: "Alex", role: "UI Designer", activity: "High", contributions: 12 },
-      { name: "Sam", role: "Python Developer", activity: "High", contributions: 24 },
-      { name: "Jo", role: "NLP Expert", activity: "Medium", contributions: 8 },
     ],
-    missingRoles: ["DevOps", "Content Strategist"],
+    missingRoles: selectedProblem.skills.slice(0, 2),
     tasks: {
-      todo: ["Implement Sentiment Analysis", "Design Mobile Onboarding"],
-      doing: ["API Integration", "User Interviews"],
-      done: ["Market Research", "Project Roadmap"]
+      todo: ["Implement " + selectedProblem.skills[0], "Research " + selectedProblem.domain + " market"],
+      doing: ["Architecture Setup"],
+      done: ["Initial Ideation"]
     }
   };
 
@@ -35,7 +42,7 @@ const Workspace = () => {
               <h1 style={{ fontSize: '2rem' }}>{project.title}</h1>
               <span className="badge badge-primary">{project.stage}</span>
             </div>
-            <p style={{ color: 'var(--text-muted)' }}>Building an empathetic AI support system for stressed environments.</p>
+            <p style={{ color: 'var(--text-muted)' }}>{project.desc}</p>
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '8px' }}>Project Progress</div>

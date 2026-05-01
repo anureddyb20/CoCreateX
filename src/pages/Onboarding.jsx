@@ -34,7 +34,7 @@ const Onboarding = ({ setUser }) => {
             <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Welcome to CoCreateX</h2>
             <p style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>Choose your path to get started.</p>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', maxWidth: '900px', margin: '0 auto' }}>
               <div 
                 className={`glass-card ${role === 'owner' ? 'active-role' : ''}`}
                 style={{ 
