@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Rocket, LayoutGrid as Hub, Layout, User, Zap } from 'lucide-react';
+import { Rocket, LayoutGrid as Hub, Layout, User, Zap, LogOut } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navbar = ({ user }) => {
@@ -68,10 +68,19 @@ const Navbar = ({ user }) => {
             );
           })}
           
-          <Link to="/onboarding" className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.9rem' }}>
-            Get Started
-            <Zap size={16} />
-          </Link>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '1rem' }}>
+            {location.pathname !== '/' && (
+              <Link to="/" className="btn-outline" style={{ padding: '8px 16px', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <LogOut size={16} />
+                Log Out
+              </Link>
+            )}
+            
+            <Link to="/onboarding" className="btn-primary" style={{ padding: '8px 16px', fontSize: '0.9rem' }}>
+              Get Started
+              <Zap size={16} />
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

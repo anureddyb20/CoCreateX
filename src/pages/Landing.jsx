@@ -44,7 +44,11 @@ const Landing = () => {
                 Start Collaborating
                 <ArrowRight size={20} />
               </button>
-              <button className="btn-outline" style={{ padding: '16px 32px', fontSize: '1.1rem' }}>
+              <button 
+                onClick={() => navigate('/hub')}
+                className="btn-outline" 
+                style={{ padding: '16px 32px', fontSize: '1.1rem' }}
+              >
                 Explore Problem Hub
               </button>
             </div>

@@ -77,15 +77,42 @@ const Onboarding = ({ setUser }) => {
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.3 }}
             className="glass-panel"
-            style={{ padding: '48px', maxWidth: '600px', width: '100%' }}
+            style={{ padding: '48px', maxWidth: '700px', width: '100%' }}
           >
-            <h2 style={{ marginBottom: '2rem' }}>Complete your profile</h2>
+            <div style={{ marginBottom: '2rem' }}>
+              <h2 style={{ fontSize: '1.8rem', marginBottom: '8px' }}>Professional Profiling</h2>
+              <p style={{ color: 'var(--text-muted)' }}>Tell us about your background to help us find the best matches.</p>
+            </div>
             
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '24px' }}>
+              <div>
+                <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Primary Expertise</label>
+                <select className="custom-select">
+                  <option>Frontend Developer</option>
+                  <option>Backend Developer</option>
+                  <option>Fullstack Developer</option>
+                  <option>UI/UX Designer</option>
+                  <option>Product Manager</option>
+                  <option>Marketing Specialist</option>
+                  <option>Data Scientist</option>
+                </select>
+              </div>
+              <div>
+                <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Experience Level</label>
+                <select className="custom-select">
+                  <option>Entry Level (0-2 years)</option>
+                  <option>Intermediate (2-5 years)</option>
+                  <option>Senior (5-8 years)</option>
+                  <option>Expert (8+ years)</option>
+                </select>
+              </div>
+            </div>
+
             <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)' }}>Skills (e.g. React, UI Design, Marketing)</label>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Key Skills</label>
               <input 
                 type="text" 
-                placeholder="Type and press enter..."
+                placeholder="e.g. React, Node.js, Figma, Python..."
                 style={{ 
                   width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)',
                   borderRadius: '12px', padding: '12px', color: 'white', fontSize: '1rem'
@@ -94,30 +121,55 @@ const Onboarding = ({ setUser }) => {
             </div>
 
             <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)' }}>Interests / Domains</label>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {['FinTech', 'Sustainability', 'AI', 'Health', 'Education'].map(d => (
-                  <span key={d} className="badge badge-info" style={{ cursor: 'pointer' }}>{d}</span>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Portfolio / GitHub / LinkedIn</label>
+              <input 
+                type="text" 
+                placeholder="https://..."
+                style={{ 
+                  width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)',
+                  borderRadius: '12px', padding: '12px', color: 'white', fontSize: '1rem'
+                }}
+              />
+            </div>
+
+            <div style={{ marginBottom: '24px' }}>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>What motivates you most?</label>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                {[
+                  "Building a Portfolio",
+                  "Finding a Co-founder",
+                  "Solving Social Problems",
+                  "Learning New Tech",
+                  "Side Project Growth",
+                  "Networking"
+                ].map(m => (
+                  <label key={m} style={{ 
+                    display: 'flex', alignItems: 'center', gap: '8px', 
+                    background: 'rgba(255,255,255,0.03)', padding: '10px', 
+                    borderRadius: '8px', border: '1px solid var(--border)',
+                    cursor: 'pointer', fontSize: '0.85rem'
+                  }}>
+                    <input type="checkbox" style={{ accentColor: 'var(--primary)' }} />
+                    {m}
+                  </label>
                 ))}
               </div>
             </div>
 
             <div style={{ marginBottom: '32px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)' }}>Availability</label>
-              <select style={{ 
-                width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)',
-                borderRadius: '12px', padding: '12px', color: 'white'
-              }}>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Weekly Commitment</label>
+              <select className="custom-select">
+                <option>Less than 5 hours / week</option>
                 <option>5-10 hours / week</option>
                 <option>10-20 hours / week</option>
-                <option>Full-time</option>
+                <option>20+ hours / week</option>
               </select>
             </div>
 
             <button 
               onClick={handleFinish}
               className="btn-primary" 
-              style={{ width: '100%', justifyContent: 'center' }}
+              style={{ width: '100%', justifyContent: 'center', padding: '16px' }}
             >
               Enter Problem Hub
               <ChevronRight size={20} />

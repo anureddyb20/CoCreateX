@@ -30,16 +30,53 @@ const Hub = () => {
     },
     {
       id: 3,
-      title: "Community-Driven Urban Farming App",
-      domain: "Social",
-      impact: "Medium",
-      difficulty: "Beginner",
-      skills: ["Mobile Dev", "Marketing", "Community Management"],
-      team: { current: 1, total: 3 },
+      title: "Smart Budgeting for Gen Z",
+      domain: "FinTech",
+      impact: "High",
+      difficulty: "Intermediate",
+      skills: ["React Native", "Firebase", "Financial API"],
+      team: { current: 1, total: 4 },
       status: "Ideation",
-      desc: "Connecting local residents with shared gardening spaces to promote urban agriculture."
+      desc: "A gamified financial management app that helps young adults save and invest effortlessly."
+    },
+    {
+      id: 4,
+      title: "Edge AI for Predictive Maintenance",
+      domain: "AI/ML",
+      impact: "High",
+      difficulty: "Advanced",
+      skills: ["PyTorch", "C++", "IoT"],
+      team: { current: 2, total: 3 },
+      status: "Ideation",
+      desc: "Real-time failure prediction for manufacturing lines using low-power edge devices."
+    },
+    {
+      id: 5,
+      title: "VR-Based Language Immersion",
+      domain: "Education",
+      impact: "Medium",
+      difficulty: "Intermediate",
+      skills: ["Unity", "C#", "Oculus SDK"],
+      team: { current: 4, total: 6 },
+      status: "Prototype",
+      desc: "Virtual reality environments where students can practice language skills in realistic scenarios."
+    },
+    {
+      id: 6,
+      title: "Plastic Waste Tracking System",
+      domain: "Sustainability",
+      impact: "Critical",
+      difficulty: "Intermediate",
+      skills: ["React", "Node.js", "GIS"],
+      team: { current: 1, total: 2 },
+      status: "Validation",
+      desc: "End-to-end tracking of industrial plastic waste to ensure 100% recycling compliance."
     }
   ];
+
+  const filteredProblems = problems.filter(p => 
+    activeFilter === 'All' || p.domain === activeFilter
+  );
 
   return (
     <div className="container" style={{ padding: '40px 0' }}>
@@ -88,12 +125,13 @@ const Hub = () => {
 
       {/* Grid */}
       <div className="grid-auto">
-        {problems.map((p, i) => (
+        {filteredProblems.map((p, i) => (
           <motion.div 
             key={p.id}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.1 }}
+            layout
             className="glass-card"
             style={{ padding: '24px', display: 'flex', flexDirection: 'column', position: 'relative' }}
           >
